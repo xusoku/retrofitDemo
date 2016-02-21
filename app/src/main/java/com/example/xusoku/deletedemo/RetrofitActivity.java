@@ -46,7 +46,6 @@ public class RetrofitActivity extends AppCompatActivity {
             }
         });
 
-        //http://api-test.dymfilm.com/cinema/list?city=上海市&district=长宁区&lng=&lat=
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://api-test.dymfilm.com")
                 .addConverterFactory(GsonConverterFactory.create())
