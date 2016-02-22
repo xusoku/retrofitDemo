@@ -36,15 +36,6 @@ public class RetrofitActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                obser(service);
-            }
-        });
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://api-test.dymfilm.com")
@@ -52,9 +43,27 @@ public class RetrofitActivity extends AppCompatActivity {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
 
-         service = retrofit.create(ApiService.class);
-//        Log.e("aaa", service.Repos().toString());
-//        Call<ModelUtil.RespCityList> call=service.Repos();
+        service = retrofit.create(ApiService.class);
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+
+            }
+        });
+//        RetrofitDemo();
+//        obser(service);
+        RxjavaDemo.demo9();
+    }
+
+
+    private void RetrofitDemo() {
+        //        Call<ModelUtil.RespCityList> call=service.Repos();
 //        call.enqueue(new Callback<ModelUtil.RespCityList>() {
 //
 //            @Override
@@ -107,13 +116,12 @@ public class RetrofitActivity extends AppCompatActivity {
                 }
             }
         }).start();
-
-
-
     }
 
     private void obser(ApiService service) {
+
         final Observable<ModelUtil.RespCinemaList> observable =service.getcinemalist("上海市", "长宁区", "", "");
+
 
         observable
                 .subscribeOn(Schedulers.io())

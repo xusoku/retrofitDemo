@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         deleteFileotherPackage();
 
-        startActivity(new Intent(this,RetrofitActivity.class));
+        startActivity(new Intent(this, RetrofitActivity.class));
     }
 
     private void deleteFileotherPackage() {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void getAvailMemory(View view){
       long a=  AppPackageManager.getInstance(this).getAvailMemory(this);
-        Toast.makeText(this,""+a,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + a, Toast.LENGTH_SHORT).show();
 
 
     }
@@ -66,5 +66,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void cleanAllCach(View view){
         AppPackageManager.getInstance(this).cleanAllCach();
+    }
+    public void toActivity(View view){
+        startActivity(new Intent(this, RetrofitActivity.class));
     }
 }
